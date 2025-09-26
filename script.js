@@ -10,9 +10,10 @@ menuBtn.addEventListener("click", () => {
 function openModal(src) {
   const modal = document.getElementById("imageModal");
   const modalImage = document.getElementById("modalImage");
-  modalImage.src = src;
+
+  modalImage.src = src;           // Set clicked image
   modal.classList.remove("hidden");
-  modal.classList.add("flex");
+  modal.classList.add("flex");    // Make it flex to center
 }
 
 function closeModal() {
@@ -20,6 +21,14 @@ function closeModal() {
   modal.classList.add("hidden");
   modal.classList.remove("flex");
 }
+
+// Optional: Close modal when clicking outside the image
+document.getElementById("imageModal").addEventListener("click", (e) => {
+  if(e.target.id === "imageModal") {
+    closeModal();
+  }
+});
+
 
 // Optional: swipe gallery with buttons (if needed)
 const scrollContainers = document.querySelectorAll(".scroll-container");
