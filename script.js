@@ -111,6 +111,17 @@ scrollContainers.forEach(container => {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const mobileVal = document.getElementById("mobile").value.trim();
+
+// Mobile validation
+const mobileRegex = /^[6-9]\d{9}$/;
+
+if (!mobileRegex.test(mobileVal)) {
+  alert("❌ Please enter a valid 10-digit mobile number");
+  return;
+}
+
+
     document.getElementById("rName").textContent =
       document.getElementById("name").value;
 
