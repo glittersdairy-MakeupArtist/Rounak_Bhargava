@@ -1,3 +1,4 @@
+
 // Mobile Menu Toggle
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -45,6 +46,31 @@ document.getElementById("imageModal").addEventListener("click", (e) => {
   }
 });
 
+// Video Modal
+function openVideoModal(src) {
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
+    modalVideo.src = src;
+    modal.classList.remove("hidden");
+    modal.style.display = "flex";
+    modalVideo.play(); // auto-play when opened
+  }
+  
+  function closeVideoModal() {
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
+    modalVideo.pause();   // pause when closed
+    modalVideo.src = "";  // reset source
+    modal.classList.add("hidden");
+    modal.style.display = "none";
+  }
+  
+  // Close video modal by clicking outside video
+  document.getElementById("videoModal").addEventListener("click", (e) => {
+    if (e.target.id === "videoModal") closeVideoModal();
+  });
+  
+
 // Horizontal Scroll Drag for Gallery (Optional)
 const scrollContainers = document.querySelectorAll(".scroll-container");
 scrollContainers.forEach(container => {
@@ -77,3 +103,27 @@ scrollContainers.forEach(container => {
     container.scrollLeft = scrollLeft - walk;
   });
 });
+
+// Booking Form Submission
+  const form = document.getElementById("bookingForm");
+  const resultBox = document.getElementById("bookingResult");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    document.getElementById("rName").textContent =
+      document.getElementById("name").value;
+
+    document.getElementById("rMobile").textContent =
+      document.getElementById("mobile").value;
+
+    document.getElementById("rDate").textContent =
+      document.getElementById("date").value;
+
+    document.getElementById("rProduct").textContent =
+      document.getElementById("product").value;
+
+    resultBox.classList.remove("hidden");
+    form.reset();
+  });
+
